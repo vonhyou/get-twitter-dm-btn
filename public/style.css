@@ -2,9 +2,32 @@
 
 body {
   background-color: #F5F5F5;
+  text-align:center;
+  margin-top: 32px;
 }
 
 .headline {
   font-family: Poppins;
-  text-align: center;
+}
+
+.container{
+  display:table;
+  height:100%;
+}
+
+.row{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* centered columns styles */
+.row-centered {  
+  text-align:center;            
+}
+            
+.col-centered {
+  display:inline-block;             
+  float:none;            
+  text-align:left;             
+  margin-right:-4px;
 }
