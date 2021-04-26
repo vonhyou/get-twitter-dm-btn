@@ -15,5 +15,12 @@
       <input type="text" id="content" name=content /><br>
       <input type="submit" value="Submit">
     </form>
+
+    <% if @permlink %>
+      <div>
+        Your DM Button's link is:
+        <%= escape_html(@permlink) %>
+      </div>
+    <% end%>
   </body>
 </html>
