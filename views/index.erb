@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Twitter DM Button</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="<%= url('/style/styles.css') %>" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" rel="stylesheet">
+  </head>
 
-<head>
-  <title>Twitter DM Button</title>
-  <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
-</head>
+  <body>
+    <!-- github ribbon -->
+    <a class="github-fork-ribbon fixed"
+       href="https://github.com/vonhyou/get-twitter-dm-btn"
+       data-ribbon="Star me on GitHub"
+       title="Star me on GitHub">
+        Star me on GitHub
+    </a>
 
-<body>
-<!-- github ribbon -->
-<a class="github-fork-ribbon fixed"
-   href="https://github.com/vonhyou/get-twitter-dm-btn"
-   data-ribbon="Star me on GitHub"
-   title="Star me on GitHub">Star me on GitHub</a>
+    <!-- main content -->
+    <main>
+      <div class="w-full max-w-xs">
+        <form method=POST class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <h2 class="text-xl font-normal leading-normal mt-0 mb-2 text-lightBlue-800">
+            Create Your Twitter DM Button!
+          </h2>
 
-<h2>Create Your Twitter DM Button!</h2>
-<form method=POST>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="thandle">
+              Twitter handle
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+               type="text" id="thandle"
+               placeholder="Enter your twitter handle" name="handle" />
+            <p class="text-gray-600 text-xs italic">
+              Twitter id retrieved from<a href="https://tweeterid.com">tweeterid.com</a>
+            </p>
+          </div>
 
-  <input type="text" placeholder="Enter your twitter handle" name="handle" />
-  <small>
-    Twitter id retrieved from<a href="https://tweeterid.com">tweeterid.com</a>
-  </small>
+          <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="dmessage">
+            Default message
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               type="text" id="dmessage"
+               placeholder="What would you like to receive?" name="content" />
+          </div>
 
-  <input type="text"placeholder="What message would you like to receive?" name="content" />
+          <div class="md:flex md:items-center">
+            <div class="md:w-1/3"></div>
+            <div class="md:w-2/3">
+              <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                      type="submit">
+                Make!
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main> 
 
-  <button type="submit">Submit</button>
-</form>
-
-
-<% if @permlink %>
-  <div>
-    Your DM Button's link is:
-    <%= escape_html(@permlink) %>
-  </div>
-<% end %>
-
-</body>
+    <!-- DM link -->
+    <% if @permlink %>
+      <div class="overflow-hidden leading-normal rounded-lg w-full max-w-xs permlink" role="alert">
+        <p class="px-4 py-3 font-bold text-purple-100 bg-purple-800" >Your DM Button's link is:</p>
+        <p class="px-4 py-3 text-purple-700 bg-purple-100" ><%= escape_html(@permlink) %></p>
+      </div>
+    <% end %>
+  </body>
 </html>
